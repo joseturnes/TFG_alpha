@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    jkube.io/scm-url: https://https://github.com/joseturnes/TFG_alpha/1234/1234
+    jkube.io/issue-system: Redmine
+    jkube.io/issue-tracker-url: https://redmine.fic.udc.es/project/1234/issues
+    jkube.io/scm-tag: head
+  labels:
+    app: 1234
+    provider: jkube
+    version: 1.0-SNAPSHOT
+    group: 1234
+  name: 1234
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: 1234
+      provider: jkube
+      group: 1234
+  template:
+    metadata:
+      annotations:
+        jkube.io/scm-url: https://https://github.com/joseturnes/TFG_alpha/1234/1234
+        jkube.io/issue-system: Redmine
+        jkube.io/issue-tracker-url: https://redmine.fic.udc.es/project/1234/issues
+        jkube.io/scm-tag: head
+      labels:
+        app: 1234
+        provider: jkube
+        version: 1.0-SNAPSHOT
+        group: 1234
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        image: https://github.com/joseturnes/TFG_alpha:5050/1234/1234:latest
+        imagePullPolicy: Always
+        name: deploy-1234
+        securityContext:
+          privileged: false
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: 1234

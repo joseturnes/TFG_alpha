@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 1234-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /1234
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /1234
+            pathType: Prefix
+            backend:
+              service:
+                name: 1234
+                port:
+                  number: 8080
